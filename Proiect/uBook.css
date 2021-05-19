@@ -1,0 +1,392 @@
+:root {
+    --backgroundColor: rgba(246, 241, 209);
+    --colorShadeA: rgb(148, 97, 20);
+    --colorShadeB: rgb(187, 138, 31);
+    --colorShadeC: rgb(204, 159, 36);
+    --colorShadeD: rgb(214, 170, 47);
+    --colorShadeE: rgb(230, 181, 21);
+  }
+
+.title {
+    margin-top: 225px;
+    font-size: 75px;
+    font-family: 'Girassol', cursive;
+    text-align: center;
+}
+
+.butoane1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#but1 {
+    margin-top: 25px;
+    margin-right: 50px;
+}
+
+#but2 {
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  *::before, *::after {
+    box-sizing: border-box;
+  }
+
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color:var(--colorShadeA);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: inherit;
+  }
+  
+  button.stilbuton {
+    padding: 1em 2em;
+    border: 2px solid var(--colorShadeA);
+    border-radius: 1em;
+    background: var(--colorShadeE);
+    transform-style: preserve-3d;
+    transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  }
+  button.stilbuton::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--colorShadeC);
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
+    transform: translate3d(0, 0.75em, -1em);
+    transition: all 125ms cubic-bezier(0, 0, 1, 1);
+  }
+  
+  
+  button.stilbuton:hover {
+    background: var(--colorShadeD);
+    transform: translate(0, 0.375em);
+  }
+  
+  button.stilbuton:hover::before {
+    transform: translate3d(0, 0.75em, -1em);
+  }
+  
+  button.stilbuton:active {
+    transform: translate(0em, 0.75em);
+  }
+  
+  button.stilbuton:active::before {
+    transform: translate3d(0, 0, -1em);
+    
+        box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+  }
+
+body {
+    background-image: url(Background.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.divBookPhotos {
+  margin-top: 75px;
+  margin-bottom: -25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookImg {
+  width: 19%;
+}
+
+.bookName {
+  font-size: 25px;
+  font-family: 'Girassol', cursive;
+  text-align: left;
+}
+
+.bookProgress {
+  font-size: 25px;
+  font-family: 'Girassol', cursive;
+  text-align: left;
+}
+
+.buttonEdit {
+  font-size: 25px;
+  font-family: 'Girassol', cursive;
+  background: inherit;
+  margin-right: 20px;
+}
+
+.buttonDelete {
+  font-size: 25px;
+  font-family: 'Girassol', cursive;
+  background: inherit;  
+  margin-right: 20px;
+}
+
+.buttonEditProgress {
+  font-size: 25px;
+  font-family: 'Girassol', cursive;
+  background: inherit ;
+  margin-right: 20px;
+}
+
+.divButtons {
+  margin-left: 60px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divAux {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.textName {
+  margin-top: 50px;
+  font-size: 35px;
+  font-family: 'Girassol', cursive;
+  text-align: center;
+}
+
+.textImage {
+  font-size: 35px;
+  font-family: 'Girassol', cursive;
+  text-align: center;
+}
+
+.textProgress {
+  font-size: 35px;
+  font-family: 'Girassol', cursive;
+  text-align: center;
+}
+
+.inputName {
+  align-self: center;
+  width: 200px;
+}
+
+.inputImage {
+  align-self: center;
+  width: 200px;
+}
+
+.inputProgress {
+  align-self: center;
+  width: 200px;
+}
+
+.addBook {
+  font-size: 35px;
+  margin-top: 15px;
+  background: inherit;
+  font-family: 'Girassol', cursive;
+  text-align: center;
+}
+
+.divModalEdit {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 70% 70%;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.divModalBoxEdit {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modalName {
+  margin-right: 5px;
+}
+
+.modalImg {
+  margin-left: 5px;
+}
+
+.submitButton {
+  background: inherit;
+  margin-right: 5px;
+}
+
+.closeButton {
+  background: inherit;
+  margin-left: 5px;
+}
+
+.divModalBoxEditProgress {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.divModalEditProgress {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 44% 44%;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modalProgress {
+  text-align: center;
+}
+
+.submitButtonProgress {
+  background: inherit;
+  margin-right: 5px;
+}
+
+.closeButtonProgress {
+  background: inherit;
+  margin-left: 5px;
+}
+
+@media (max-width: 1280px) {
+    body {
+        background-image: url(Background_tableta.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    button {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        border: 0;
+        vertical-align: middle;
+        text-decoration: none;
+        font-size: 1rem;
+        color:var(--colorShadeA);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-family: inherit;
+    }
+
+    #but1 {
+        margin-top: 25px;
+        margin-right: 25px;
+    }
+    
+    #but2 {
+        margin-top: 25px;
+        margin-left: 25px;
+    }
+}
+
+@media (max-width: 728px) {
+    body {
+        background-image: url(Background_tableta.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .butoane1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        border: 0;
+        vertical-align: middle;
+        text-decoration: none;
+        font-size: 1rem;
+        color:var(--colorShadeA);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-family: inherit;
+    }
+
+    #but1 {
+        margin: 25px 0px 0px 0px;
+    }
+    
+    #but2 {
+        margin: 100px 0px 0px 0px;
+    }
+    
+    .title {
+        font-size: 65px;
+    }
+
+    .textName {
+      font-weight: bold;
+      margin-top: 50px;
+      font-size: 25px;
+      font-family: 'Girassol', cursive;
+      text-align: center;
+    }
+    
+    .textImage {
+      font-weight: bold;
+      font-size: 25px;
+      font-family: 'Girassol', cursive;
+      text-align: center;
+    }
+    
+    .textProgress {
+      font-weight: bold;
+      font-size: 25px;
+      font-family: 'Girassol', cursive;
+      text-align: center;
+    }
+
+    .addBook {
+      font-size: 30px;
+      margin-top: 15px;
+      background: inherit;
+      font-family: 'Girassol', cursive;
+      text-align: center;
+    }
+}
+
